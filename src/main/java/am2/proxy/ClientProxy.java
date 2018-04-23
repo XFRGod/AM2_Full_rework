@@ -11,7 +11,7 @@ public class ClientProxy extends CommonProxy{
     @Override
     public void preInit(FMLPreInitializationEvent event){
         super.preInit(event);
-        AM2.logger.log(Level.INFO, "registering items");
+        //AM2.logger.log(Level.INFO, "registering items");
     }
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event){}

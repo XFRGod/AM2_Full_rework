@@ -1,7 +1,7 @@
 package am2;
 
 import am2.proxy.CommonProxy;
-import am2.util.Reference;
+import am2.utils.Reference;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;

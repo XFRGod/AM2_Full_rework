@@ -9,12 +9,12 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ManaProvider implements ICapabilitySerializable<NBTBase> {
-    @CapabilityInject(IMana.class)
+public class AM2CapabilitiesProvider implements ICapabilitySerializable<NBTBase> {
+    @CapabilityInject(IAM2Capabilites.class)
 
-    public static final Capability<IMana> MANA_CAP = null;
+    public static final Capability<IAM2Capabilites> MANA_CAP = null;
 
-    private IMana instance = MANA_CAP.getDefaultInstance();
+    private IAM2Capabilites instance = MANA_CAP.getDefaultInstance();
 
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {

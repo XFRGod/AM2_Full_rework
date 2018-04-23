@@ -1,4 +1,4 @@
-package am2.util;
+package am2.utils;
 
 public class Reference{
     public static final String MODID = "am2";

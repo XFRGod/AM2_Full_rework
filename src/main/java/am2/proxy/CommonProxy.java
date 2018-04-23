@@ -1,9 +1,8 @@
 package am2.proxy;
 
-import am2.capabilities.IMana;
-import am2.capabilities.Mana;
-import am2.capabilities.ManaFactory;
-import am2.capabilities.ManaStorage;
+import am2.capabilities.IAM2Capabilites;
+import am2.capabilities.AM2CapabilitiesFactory;
+import am2.capabilities.AM2CapabilitiesStorage;
 import am2.config.Config;
 import am2.handler.CapabilityHandler;
 import am2.handler.EventHandler;
@@ -31,7 +30,7 @@ public class CommonProxy {
         Config.readConfig();
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
-        CapabilityManager.INSTANCE.register(IMana.class, new ManaStorage(),new ManaFactory());
+        CapabilityManager.INSTANCE.register(IAM2Capabilites.class, new AM2CapabilitiesStorage(),new AM2CapabilitiesFactory());
     }
 
     public void init(FMLInitializationEvent event){}

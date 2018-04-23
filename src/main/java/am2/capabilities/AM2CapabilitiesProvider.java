@@ -12,29 +12,29 @@ import javax.annotation.Nullable;
 public class AM2CapabilitiesProvider implements ICapabilitySerializable<NBTBase> {
     @CapabilityInject(IAM2Capabilites.class)
 
-    public static final Capability<IAM2Capabilites> MANA_CAP = null;
+    public static final Capability<IAM2Capabilites> AM2_CAPABILITY = null;
 
-    private IAM2Capabilites instance = MANA_CAP.getDefaultInstance();
+    private IAM2Capabilites instance = AM2_CAPABILITY.getDefaultInstance();
 
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability == MANA_CAP;
+        return capability == AM2_CAPABILITY;
     }
 
     @Nullable
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == MANA_CAP ? MANA_CAP.<T> cast(this.instance) : null;
+        return capability == AM2_CAPABILITY ? AM2_CAPABILITY.<T> cast(this.instance) : null;
     }
 
     @Override
     public NBTBase serializeNBT() {
-        return MANA_CAP.getStorage().writeNBT(MANA_CAP, this.instance, null);
+        return AM2_CAPABILITY.getStorage().writeNBT(AM2_CAPABILITY, this.instance, null);
     }
 
     @Override
     public void deserializeNBT(NBTBase nbt) {
-        MANA_CAP.getStorage().readNBT(MANA_CAP, this.instance, null, nbt);
+        AM2_CAPABILITY.getStorage().readNBT(AM2_CAPABILITY, this.instance, null, nbt);
 
     }
 }

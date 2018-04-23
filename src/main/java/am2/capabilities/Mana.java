@@ -4,8 +4,9 @@ public class Mana implements IMana {
 
     private int magicLevel = 0;
     private int magicXP = 0;
-    private long maxMana = 0;
-    private long currentMana = 0;
+    private long maxMana = 10;
+    private long currentMana = 2;
+    private int manaRegenRate = 1;
 
     @Override
     public long getCurrentMana() {

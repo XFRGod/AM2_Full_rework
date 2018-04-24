@@ -28,6 +28,8 @@ public class CommonProxy {
         File directory = event.getModConfigurationDirectory();
         config = new Configuration(new File(directory.getPath(), "am2.cfg"));
         Config.readConfig();
+
+
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
         CapabilityManager.INSTANCE.register(IAM2Capabilites.class, new AM2CapabilitiesStorage(),new AM2CapabilitiesFactory());

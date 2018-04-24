@@ -7,7 +7,7 @@ public class AM2Capabilities implements IAM2Capabilites {
     private float currentMana;
     private float currentBurnout;
     private float currentXP;
-    private int currentLevel;
+    private int currentLevel = 9999;
 
     private static enum SYNC_TYPE{
         CONTINGENCY (0x1),

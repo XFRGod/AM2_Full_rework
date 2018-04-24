@@ -25,13 +25,21 @@ public class AM2CapabilitiesStorage implements Capability.IStorage<IAM2Capabilit
         compound.setDouble("MarkX", instance.getMarkX());
         compound.setDouble("MarkY", instance.getMarkY());
         compound.setDouble("MarkZ", instance.getMarkZ());
-        compound.setInteger("MarkDimensionId", instance.getMarkDimensionID());
+        compound.setInteger("MarkDimensionID", instance.getMarkDimensionID());
         return compound;
     }
 
     @Override
     public void readNBT(Capability<IAM2Capabilites> capability, IAM2Capabilites instance, EnumFacing side, NBTBase nbt) {
-        instance.setCurrentMana(((NBTPrimitive) nbt).getLong());
+        NBTTagCompound am2tag = NBTUtils.getAM2Tag((NBTTagCompound)nbt);
+        instance.setCurrentMana(am2tag.getFloat("CurrentMana"));
+        instance.setCurrentLevel(am2tag.getInteger("CurrentLevel"));
+        instance.setCurrentXP(am2tag.getFloat("CurrentXP"));
+        instance.setCurrentBurnout(am2tag.getFloat("CurrentBurnout"));
 
+        instance.setMarkX(am2tag.getDouble("MarkX"));
+        instance.setMarkY(am2tag.getDouble("MarkY"));
+        instance.setMarkZ(am2tag.getDouble("MarkZ"));
+        instance.setMarkDimensionID(am2tag.getInteger("MarkDimensionID"));
     }
 }

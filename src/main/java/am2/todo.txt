@@ -1,0 +1,9 @@
+Reworking everything from the basemod
+Adding something new  -- New Terminus shape (Dragon's breath), new Continegncy, new Spell Component Revive ?
+HU localization
+Making the repo public -- When ready
+JEI implementation
+Arcane Compendium overhaul -- GuideAPI implementation until it's done
+Baubles integration
+OreDictionary
+Json recipies

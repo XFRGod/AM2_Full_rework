@@ -1,5 +1,6 @@
 package am2;
 
+import am2.config.Config;
 import am2.proxy.CommonProxy;
 import am2.utils.Reference;
 import net.minecraftforge.fml.common.Mod;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
 public class AM2{
     @Instance
     public static AM2 instance;
-
+    public static Config config;
     public static Logger logger;
 
     @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)

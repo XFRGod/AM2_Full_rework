@@ -4,12 +4,14 @@ import am2.AM2;
 import am2.capabilities.AM2Capabilities;
 import am2.capabilities.IAM2Capabilites;
 import am2.config.Config;
+import am2.math.AMVector2;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -70,7 +72,7 @@ public class AMGUI extends Gui {
 
         int barWidth = i / 8;
 
-        AMVector2 Burnout_hud = this.getShiftedVector(ArsMagica2.config.getBurnoutHudPosition(), i, j);
+        AMVector2 Burnout_hud = this.getShiftedVector(AM2.config.getBurnoutHudPosition(), i, j);
         AMVector2 mana_hud = this.getShiftedVector(ArsMagica2.config.getManaHudPosition(), i, j);
 
         float green = 0.5f;
@@ -95,7 +97,7 @@ public class AMGUI extends Gui {
         float progressScaled = (renderMana / (maxMana + 0.01f));
         boolean hasOverloadMana = mana > (maxMana + 1);
 
-        if (AM2.config.showHudBars()) {
+        if (AM2.config.showHUDBars) {
             //handle flashing of mana bar
             float flashTimer = AMGUIHelper.instance.getFlashTimer(MANA_BAR_FLASH_SLOT);
             if (flashTimer > 0) {
@@ -112,10 +114,7 @@ public class AMGUI extends Gui {
                     red += (redShift * pct);
                 }
                 GlStateManager.color(red, green, blue);
-            } else if (hasBonusMana)
-                GlStateManager.color(0.2f, 0.9f, 0.6f);
-            else if (hasOverloadMana)
-                GlStateManager.color(1f, 0.0f, 0.0f);
+            }
             ItemStack curItem = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
 
             this.DrawPartialIconAtXY(AMGuiIcons.manaLevel, progressScaled, 1, mana_hud.iX + 16, mana_hud.iY + 1f, (int) (barWidth * 0.99F), 40, false);
@@ -138,12 +137,39 @@ public class AMGUI extends Gui {
             manaBarColor = (manaBarColor << 8) + Math.round(blue * 255);
 
             String magicLevel = (new StringBuilder()).append("").append(AM2Capabilities.For(this.mc.player).getCurrentLevel()).toString();
-            AMVector2 magicLevelPos = this.getShiftedVector(ArsMagica2.config.getLevelPosition(), i, j);
+            AMVector2 magicLevelPos = this.getShiftedVector(AM2.config.getLevelPosition, i, j);
             magicLevelPos.iX -= Minecraft.getMinecraft().fontRenderer.getStringWidth(magicLevel) / 2;
             fontRenderer.drawStringWithShadow(magicLevel, magicLevelPos.iX, magicLevelPos.iY, manaBarColor);
 
             if (flashTimer > 0) {
                 GlStateManager.color(1.0f, 1.0f, 1.0f);
+            }
+        }
+    }
+    public void RenderMagicXP(int i, int j){
+        AM2Capabilities props = AM2Capabilities.For(Minecraft.getMinecraft().player);
+        if (props.getCurrentLevel() > 0){
+            GlStateManager.enableBlend();
+            AMVector2 position = this.getShiftedVector(AM2.config.getXPBarPosition(), i, j);
+            AMVector2 dimensions = new AMVector2(182, 5);
+            Minecraft.getMinecraft().renderEngine.bindTexture(mc_gui);
+            GlStateManager.color(0.5f, 0.5f, 1.0f, AM2.config.showXPAlways ? 1.0f : AMGUIHelper.instance.getMagicXPBarAlpha());
+
+            //base XP bar
+            this.drawTexturedModalRect_Classic(position.iX, position.iY, 0, 64, dimensions.iX, dimensions.iY, dimensions.iX, dimensions.iY);
+
+            if (props.getCurrentXP() > 0){
+                float pctXP = props.getCurrentXP() / props.getMaxXP();
+                if (pctXP > 1)
+                    pctXP = 1;
+                int width = (int)((dimensions.iX + 1) * pctXP);
+                this.drawTexturedModalRect_Classic(position.iX, position.iY, 0, 69, width, dimensions.iY, width, dimensions.iY);
+            }
+
+            if (AM2.config.showNumerics && (AM2.config.showXPAlways || AMGUIHelper.instance.getMagicXPBarAlpha() > 0)){
+                String xpStr = I18n.format("am2.gui.xp") + ": " + +(int)(props.getCurrentXP() * 100) + "/" + (int)(props.getMaxXP() * 100);
+                AMVector2 numericPos = this.getShiftedVector(ArsMagica2.config.getXPNumericPosition(), i, j);
+                Minecraft.getMinecraft().fontRenderer.drawString(xpStr, numericPos.iX, numericPos.iY, 0x999999);
             }
         }
     }

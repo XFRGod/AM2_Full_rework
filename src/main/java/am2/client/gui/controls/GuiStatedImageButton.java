@@ -1,6 +1,6 @@
 package am2.client.gui.controls;
 
-import am2.api.math.AMVector2;
+import am2.math.AMVector2;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 

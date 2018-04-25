@@ -3,6 +3,7 @@ package am2.client.gui;
 import am2.AM2;
 import am2.math.AMVector2;
 import am2.client.gui.controls.GuiButtonVariableDims;
+import am2.proxy.CommonProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -70,10 +71,10 @@ public class GUIHUDCustomization extends GuiScreen{
     public void initGui(){
         super.initGui();
 
-        doShowHudMinimally = AM2.config.showHUDMinimally;
-        doShowNumerics = AM2.config.showNumerics;
-        doShowXPAlways = AM2.config.showXPAlways;
-        doShowBars = AM2.config.showHUDBars;
+        doShowHudMinimally = AM2.config.getShowHUDMinimally();
+        doShowNumerics = AM2.config.getShowNumerics();
+        doShowXPAlways = AM2.config.showXPAlways();
+        doShowBars = AM2.config.showHUDBars();
 
         int barWidth = (width / 8) + 16;
 
@@ -104,23 +105,13 @@ public class GUIHUDCustomization extends GuiScreen{
         manaButton.enabled = doShowBars;
         burnoutButton.enabled = doShowBars;
 
-        initButtonAndSnapData(manaButton, AM2.config.getManaHudPosition());
-        initButtonAndSnapData(burnoutButton, AM2.config.getBurnoutHudPosition()); //new AMVector2(0.5, 0.5)
+        initButtonAndSnapData(manaButton, AM2.config.getManaHUDPosition());
+        initButtonAndSnapData(burnoutButton, AM2.config.getBurnoutHUDPosition()); //new AMVector2(0.5, 0.5)
         initButtonAndSnapData(levelButton, AM2.config.getLevelPosition());
-        initButtonAndSnapData(affinityButton, AM2.config.getAffinityPosition());
-        initButtonAndSnapData(positiveBuffs, AM2.config.getPositiveBuffsPosition());
-        initButtonAndSnapData(negativeBuffs, AM2.config.getNegativeBuffsPosition());
-        initButtonAndSnapData(armorHead, AM2.config.getArmorPositionHead());
-        initButtonAndSnapData(armorChest, AM2.config.getArmorPositionChest());
-        initButtonAndSnapData(armorLegs, AM2.config.getArmorPositionLegs());
-        initButtonAndSnapData(armorBoots, AM2.config.getArmorPositionBoots());
         initButtonAndSnapData(xpBar, AM2.config.getXPBarPosition());
-        initButtonAndSnapData(contingency, AM2.config.getContingencyPosition());
         initButtonAndSnapData(manaNumeric, AM2.config.getManaNumericPosition());
         initButtonAndSnapData(burnoutNumeric, AM2.config.getBurnoutNumericPosition());
         initButtonAndSnapData(XPNumeric, AM2.config.getXPNumericPosition());
-        initButtonAndSnapData(spellBook, AM2.config.getSpellBookPosition());
-        initButtonAndSnapData(manaShielding, AM2.config.getManaShieldingPosition());
 
         setOptionsVisibility(false);
 

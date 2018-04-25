@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class AM2{
     @Instance
     public static AM2 instance;
-    public static Config config;
+    public static Config config = new Config();
     public static Logger logger;
 
     @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)

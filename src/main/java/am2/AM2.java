@@ -13,20 +13,18 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import java.util.logging.Logger;
 
 
-@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, useMetadata = true)
+@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, useMetadata = true, guiFactory = Reference.MODID+".client.gui.ConfigGUIFactory")
 public class AM2{
     @Instance
     public static AM2 instance;
-    public static Config config = new Config();
+    public static Config config = CommonProxy.config;
     public static Logger logger;
 
     @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public static void preInit(FMLPreInitializationEvent event){
-        proxy.preInit(event);
-    }
+    public static void preInit(FMLPreInitializationEvent event){ proxy.preInit(event); }
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event){
         proxy.init(event);

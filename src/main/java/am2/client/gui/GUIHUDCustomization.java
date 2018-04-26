@@ -73,8 +73,8 @@ public class GUIHUDCustomization extends GuiScreen{
 
         doShowHudMinimally = AM2.config.getShowHUDMinimally();
         doShowNumerics = AM2.config.getShowNumerics();
-        doShowXPAlways = AM2.config.showXPAlways();
-        doShowBars = AM2.config.showHUDBars();
+        doShowXPAlways = AM2.config.getShowXPAlways();
+        doShowBars = AM2.config.getShowHUDBars();
 
         int barWidth = (width / 8) + 16;
 

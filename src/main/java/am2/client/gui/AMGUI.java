@@ -100,7 +100,7 @@ public class AMGUI extends Gui {
         float progressScaled = (renderMana / (maxMana + 0.01f));
         boolean hasOverloadMana = mana > (maxMana + 1);
 
-        if (AM2.config.showHUDBars()) {
+        if (AM2.config.getShowHUDBars()) {
             //handle flashing of mana bar
             float flashTimer = AMGUIHelper.instance.getFlashTimer(MANA_BAR_FLASH_SLOT);
             if (flashTimer > 0) {
@@ -156,7 +156,7 @@ public class AMGUI extends Gui {
             AMVector2 position = this.getShiftedVector(AM2.config.getXPBarPosition(), i, j);
             AMVector2 dimensions = new AMVector2(182, 5);
             Minecraft.getMinecraft().renderEngine.bindTexture(mc_gui);
-            GlStateManager.color(0.5f, 0.5f, 1.0f, AM2.config.showXPAlways() ? 1.0f : AMGUIHelper.instance.getMagicXPBarAlpha());
+            GlStateManager.color(0.5f, 0.5f, 1.0f, AM2.config.getShowXPAlways() ? 1.0f : AMGUIHelper.instance.getMagicXPBarAlpha());
 
             //base XP bar
             this.drawTexturedModalRect_Classic(position.iX, position.iY, 0, 64, dimensions.iX, dimensions.iY, dimensions.iX, dimensions.iY);
@@ -169,7 +169,7 @@ public class AMGUI extends Gui {
                 this.drawTexturedModalRect_Classic(position.iX, position.iY, 0, 69, width, dimensions.iY, width, dimensions.iY);
             }
 
-            if (AM2.config.getShowNumerics() && (AM2.config.showXPAlways() || AMGUIHelper.instance.getMagicXPBarAlpha() > 0)){
+            if (AM2.config.getShowNumerics() && (AM2.config.getShowXPAlways() || AMGUIHelper.instance.getMagicXPBarAlpha() > 0)){
                 String xpStr = I18n.format("am2.gui.xp") + ": " + +(int)(props.getCurrentXP() * 100) + "/" + (int)(props.getMaxXP() * 100);
                 AMVector2 numericPos = this.getShiftedVector(AM2.config.getXPNumericPosition(), i, j);
                 Minecraft.getMinecraft().fontRenderer.drawString(xpStr, numericPos.iX, numericPos.iY, 0x999999);

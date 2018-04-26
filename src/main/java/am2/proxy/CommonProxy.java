@@ -22,13 +22,11 @@ import java.io.File;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
-    public static Configuration config;
+    public static Config config;
 
     public void preInit(FMLPreInitializationEvent event){
         File directory = event.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "am2.cfg"));
-        Config.readConfig();
-
+        config = new Config(new File(directory.getPath(), "am2.cfg"));
 
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());

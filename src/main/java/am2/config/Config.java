@@ -2,14 +2,10 @@ package am2.config;
 
 import am2.AM2;
 import am2.math.AMVector2;
-import net.minecraftforge.client.gui.ForgeGuiFactory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
-import net.minecraftforge.fml.client.IModGuiFactory;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.logging.Level;
 
 public class Config extends Configuration{
@@ -52,13 +48,15 @@ public class Config extends Configuration{
             this.load();
             initGeneralConfig();
             initGUIConfig();
+            AM2.logger.log(Level.FINE, "Successfully loaded config!");
         }
         catch (Exception e1){
-            AM2.logger.log(Level.WARNING, "Problem loading config file!", e1);
+            AM2.logger.log(Level.SEVERE, "Problem loading config file!", e1);
         }
         finally{
             if (this.hasChanged()){
                 this.save();
+                AM2.logger.log(Level.FINE, "Saved config file!");
             }
         }
     }

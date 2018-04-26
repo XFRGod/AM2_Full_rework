@@ -20,27 +20,16 @@ public class GUIHUDCustomization extends GuiScreen{
     private GuiButtonVariableDims burnoutButton;
     private GuiButtonVariableDims levelButton;
     private GuiButtonVariableDims affinityButton;
-    private GuiButtonVariableDims positiveBuffs;
-    private GuiButtonVariableDims negativeBuffs;
-    private GuiButtonVariableDims armorHead;
-    private GuiButtonVariableDims armorChest;
-    private GuiButtonVariableDims armorLegs;
-    private GuiButtonVariableDims armorBoots;
     private GuiButtonVariableDims xpBar;
-    private GuiButtonVariableDims contingency;
-    private GuiButtonVariableDims manaShielding;
 
     private GuiButtonVariableDims manaNumeric;
     private GuiButtonVariableDims burnoutNumeric;
     private GuiButtonVariableDims XPNumeric;
 
-    private GuiButtonVariableDims spellBook;
 
     private GuiButtonVariableDims options;
-    private GuiButtonVariableDims showBuffs;
     private GuiButtonVariableDims showNumerics;
     private GuiButtonVariableDims showHudMinimally;
-    private GuiButtonVariableDims showArmorUI;
     private GuiButtonVariableDims showXPAlways;
     private GuiButtonVariableDims showHudBars;
 
@@ -115,20 +104,16 @@ public class GUIHUDCustomization extends GuiScreen{
 
         setOptionsVisibility(false);
 
-        this.buttonList.add(showBuffs);
         this.buttonList.add(showNumerics);
         this.buttonList.add(options);
         this.buttonList.add(showHudMinimally);
-        this.buttonList.add(showArmorUI);
         this.buttonList.add(showXPAlways);
         this.buttonList.add(showHudBars);
     }
 
     private void setOptionsVisibility(boolean visible){
-        showBuffs.visible = visible;
         showNumerics.visible = visible;
         showHudMinimally.visible = visible;
-        showArmorUI.visible = visible;
         showXPAlways.visible = visible;
         showHudBars.visible = visible;
     }
@@ -215,23 +200,12 @@ public class GUIHUDCustomization extends GuiScreen{
                 getSnapVector(burnoutButton),
                 getSnapVector(levelButton),
                 getSnapVector(affinityButton),
-                getSnapVector(positiveBuffs),
-                getSnapVector(negativeBuffs),
-                getSnapVector(armorHead),
-                getSnapVector(armorChest),
-                getSnapVector(armorLegs),
-                getSnapVector(armorBoots),
                 getSnapVector(xpBar),
-                getSnapVector(contingency),
                 getSnapVector(manaNumeric),
                 getSnapVector(burnoutNumeric),
                 getSnapVector(XPNumeric),
-                getSnapVector(spellBook),
-                getSnapVector(manaShielding),
-                doShowBuffs,
                 doShowNumerics,
                 doShowHudMinimally,
-                doShowArmor,
                 doShowXPAlways,
                 doShowBars);
     }
@@ -243,13 +217,7 @@ public class GUIHUDCustomization extends GuiScreen{
         for (Object button : this.buttonList){
             if (button instanceof GuiButtonVariableDims){
                 if (((GuiButtonVariableDims)button).mousePressed(mc, par1, par2)){
-                    if (button == showBuffs){
-                        doShowBuffs = !doShowBuffs;
-                        showBuffs.displayString = I18n.format("am2.gui.buffTimers") + ": " + ((doShowBuffs) ? I18n.format("am2.gui.yes") : I18n.format("am2.gui.no"));
-                        positiveBuffs.enabled = doShowBuffs;
-                        negativeBuffs.enabled = doShowBuffs;
-                        storeGuiPositions();
-                    }else if (button == showNumerics){
+                    if (button == showNumerics){
                         doShowNumerics = !doShowNumerics;
                         showNumerics.displayString = I18n.format("am2.gui.numericValues") + ": " + ((doShowNumerics) ? I18n.format("am2.gui.yes") : I18n.format("am2.gui.no"));
                         manaNumeric.enabled = doShowNumerics;
@@ -272,15 +240,6 @@ public class GUIHUDCustomization extends GuiScreen{
                         showHudBars.displayString = I18n.format("am2.gui.hudBars") + ": " + ((doShowBars) ? I18n.format("am2.gui.yes") : I18n.format("am2.gui.no"));
                         manaButton.enabled = doShowBars;
                         burnoutButton.enabled = doShowBars;
-                        storeGuiPositions();
-                    }else if (button == showArmorUI){
-                        doShowArmor = !doShowArmor;
-                        showArmorUI.displayString = I18n.format("am2.gui.armorUI") + ": " + ((doShowHudMinimally) ? I18n.format("am2.gui.yes") : I18n.format("am2.gui.no"));
-                        armorHead.enabled = doShowArmor;
-                        armorChest.enabled = doShowArmor;
-                        armorLegs.enabled = doShowArmor;
-                        armorBoots.enabled = doShowArmor;
-                        manaShielding.enabled = doShowArmor;
                         storeGuiPositions();
                     }else if (!showOptions){
                         dragTarget = (GuiButtonVariableDims)button;

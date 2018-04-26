@@ -84,7 +84,7 @@ public class Config extends Configuration{
         this.addCustomCategoryComment(SPELLS, "Spell config");
     }
 
-    public void setGuiPositions(AMVector2 manaHud, AMVector2 burnoutHud, AMVector2 levelHud, AMVector2 affinityHud, AMVector2 posBuffsHud, AMVector2 negBuffsHud, AMVector2 armorHead, AMVector2 armorChest, AMVector2 armorLegs, AMVector2 armorBoots, AMVector2 xpBar, AMVector2 contingency, AMVector2 manaNumeric, AMVector2 burnoutNumeric, AMVector2 XPNumeric, AMVector2 spellBookPos, AMVector2 manaShieldingPos, boolean showBuffs, boolean showNumerics, boolean minimalHud, boolean showArmorUI, boolean showXPAlways, boolean showHudBars){
+    public void setGuiPositions(AMVector2 manaHud, AMVector2 burnoutHud, AMVector2 levelHud, AMVector2 affinityHud, AMVector2 xpBar, AMVector2 manaNumeric, AMVector2 burnoutNumeric, AMVector2 XPNumeric, boolean showNumerics, boolean minimalHud, boolean showXPAlways, boolean showHudBars){
         manaHUDPosition         = manaHud;
         burnoutHUDPosition      = burnoutHud;
         levelPosition           = levelHud;

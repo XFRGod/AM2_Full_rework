@@ -5,6 +5,7 @@ import am2.capabilities.AM2Capabilities;
 import am2.capabilities.IAM2Capabilites;
 import am2.config.Config;
 import am2.math.AMVector2;
+import am2.proxy.CommonProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -19,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -26,6 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class AMGUI extends Gui {
     private final Minecraft mc;
+    public static final Config  c = CommonProxy.config;
     private float zLevel;
     private static final short MANA_BAR_FLASH_SLOT = 4;
     private static final ResourceLocation mc_gui = new ResourceLocation("textures/gui/icons.png");
@@ -39,7 +42,7 @@ public class AMGUI extends Gui {
     public void renderGameOverlay(RenderGameOverlayEvent.Post event){
         if (event.getType() != RenderGameOverlayEvent.ElementType.EXPERIENCE)
             return;
-        boolean drawAMHud = !AM2.config.getShowHUDMinimally();
+        boolean drawAMHud = !c.getShowHUDMinimally();
         if (this.mc.currentScreen instanceof GUIHUDCustomization || this.mc.inGameHasFocus) {
             ItemStack ci = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
             ScaledResolution scaledresolution = new ScaledResolution(this.mc);

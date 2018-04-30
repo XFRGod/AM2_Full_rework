@@ -1,5 +1,5 @@
 Reworking everything from the basemod
-Adding something new  -- New Terminus shape (Dragon's breath), new Continegncy, new Spell Component Revive ?
+Adding something new  -- New Terminus shape (Dragon's breath), new Contingency, new Spell Component Revive ?
 HU localization
 Making the repo public -- When ready
 JEI implementation

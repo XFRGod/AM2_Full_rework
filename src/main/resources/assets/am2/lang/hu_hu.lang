@@ -1,0 +1,8 @@
+language.name=Magyar
+language.region=Magyarország
+language.code=hu_hu
+
+#Config
+config.am2=Ars Magica 2 - Recast Beállítások
+config.am2:client.hud=HUD Beállítások
+config.am2:client.hud.minimalhud=Minimálisan mutassa a játékbeli HUD-ot

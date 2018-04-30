@@ -29,30 +29,28 @@ public class AMGUIIcons {
 	public static AMGUIIcons instance = new AMGUIIcons();
 
 
-	private AMGUIIcons(){
-
-	}
+	private AMGUIIcons(){ }
 
 	public void init(TextureMap textureMap){
-		manaBar 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/mana_bar"));
-		manaLevel 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/mana_level"));
+		manaBar 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + "gui/icons/mana_bar"));
+		manaLevel 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + "gui/icons/mana_level"));
 
-		fatigueIcon   = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/fatigue_icon"));
-		fatigueBar 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/fatigue_bar"));
-		fatigueLevel  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/fatigue_level"));
+		fatigueIcon   = textureMap.registerSprite(new ResourceLocation(Reference.MODID + "gui/icons/fatigue_icon"));
+		fatigueBar 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + "gui/icons/fatigue_bar"));
+		fatigueLevel  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + "gui/icons/fatigue_level"));
 
-		padlock 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/padlock"));
-		warning    	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/update_available"));
-		checkmark 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/up_to_date"));
+		padlock 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui/icons/padlock"));
+		warning    	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui/icons/update_available"));
+		checkmark 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui/icons/up_to_date"));
 
-		newEntry 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/new"));
+		newEntry 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui/icons/new"));
 
 		evilBook	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":items/evilbook"));
 
-		gatewayPortal = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/gateway"));
+		gatewayPortal = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui/icons/gateway"));
 
-		selectedRunes = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/rune_selected_aura"));
+		selectedRunes = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui/icons/rune_selected_aura"));
 
-		frame 		  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui_icons/spellframe"));
+		frame 		  = textureMap.registerSprite(new ResourceLocation(Reference.MODID + ":gui/icons/spellframe"));
 	}
 }

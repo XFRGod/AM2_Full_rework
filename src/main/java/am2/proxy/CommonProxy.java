@@ -3,14 +3,13 @@ package am2.proxy;
 import am2.capabilities.IAM2Capabilites;
 import am2.capabilities.AM2CapabilitiesFactory;
 import am2.capabilities.AM2CapabilitiesStorage;
-import am2.config.Config;
 import am2.handler.CapabilityHandler;
+import am2.handler.ConfigHandler;
 import am2.handler.EventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -22,23 +21,18 @@ import java.io.File;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
-    public static Config config;
 
     public void preInit(FMLPreInitializationEvent event){
-        File directory = event.getModConfigurationDirectory();
-        config = new Config(new File(directory.getPath(), "am2.cfg"));
-
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
+        MinecraftForge.EVENT_BUS.register(new ConfigHandler());
+
         CapabilityManager.INSTANCE.register(IAM2Capabilites.class, new AM2CapabilitiesStorage(),new AM2CapabilitiesFactory());
     }
 
     public void init(FMLInitializationEvent event){}
 
     public void postInit(FMLPostInitializationEvent event){
-        if (config.hasChanged()) {
-            config.save();
-        }
     }
 
     @SubscribeEvent

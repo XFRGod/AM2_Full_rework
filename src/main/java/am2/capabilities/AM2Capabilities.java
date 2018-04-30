@@ -7,10 +7,10 @@ public class AM2Capabilities implements IAM2Capabilites {
 
     private int syncCode = 0;
     private int MarkDimensionID = -512;
-    private float currentMana;
+    private float currentMana = 120.0f;
     private float currentBurnout;
     private float currentXP;
-    private int currentLevel;
+    private int currentLevel = 10;
 
     private static enum SYNC_TYPE{
         CONTINGENCY (0x1),

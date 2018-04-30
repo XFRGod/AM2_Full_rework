@@ -1,8 +1,8 @@
 package am2;
 
-import am2.config.Config;
 import am2.proxy.CommonProxy;
 import am2.utils.Reference;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -19,11 +19,14 @@ import java.util.logging.Logger;
 public class AM2{
     @Instance
     public static AM2 instance;
-    public static Config config = CommonProxy.config;
     public static Logger logger = Logger.getLogger(Reference.NAME);
 
     @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
     public static CommonProxy proxy;
+
+    static {
+        FluidRegistry.enableUniversalBucket();
+    }
 
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event){ proxy.preInit(event); }

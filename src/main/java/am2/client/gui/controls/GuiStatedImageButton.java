@@ -75,7 +75,7 @@ public class GuiStatedImageButton extends GuiButtonVariableDims{
 		if (vec == null)
 			vec = this.stateImages.get(States.IDLE);
 
-		drawTexturedModalRect(this.x, this.y, vec.iX, vec.iY, width, height);
+		drawTexturedModalRect(this.x, this.y, (int) vec.x, (int) vec.y, width, height);
 	}
 
 	@Override

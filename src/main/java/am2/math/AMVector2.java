@@ -4,14 +4,9 @@ public class AMVector2{
 	public double x;
 	public double y;
 
-	public int iX;
-	public int iY;
-
 	public AMVector2(double x, double y){
 		this.x = x;
 		this.y = y;
-		this.iX = (int)x;
-		this.iY = (int)y;
 	}
 
 	public AMVector2 subtract(AMVector2 vec){

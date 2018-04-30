@@ -1,0 +1,20 @@
+language.name=English (US)
+language.region=United States
+language.code=en_us
+
+am2.gui.xp=XP
+
+#Config
+config.am2=Ars Magica 2 - Recast Config
+config.am2:client.hud=HUD Settings
+config.am2:client.hud.minimalhud=Show the ingame HUD minimally
+config.am2:client.hud.numerics=Show stats represented by numbers
+config.am2:client.persistentxp=Persistent XP bar
+config.am2:client.hudbars=Visual Mana/Burnout bar
+config.am2:client.manabarposition=Mana bar HUD position
+config.am2:client.burnoutbarposition=Burnout bar HUD position
+config.am2:client.magicxpbarposition=Magic XP bar HUD position
+config.am2:client.magiclevelposition=Magic level HUD position
+config.am2:client.mananumericposition=Numeric Mana HUD position
+config.am2:client.burnoutnumericposition=Numeric Burnout HUD position
+config.am2:client.magicxpnumericposition=Numeric magic XP HUD position

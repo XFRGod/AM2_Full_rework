@@ -10,9 +10,7 @@ public class AM2Capabilities implements IAM2Capabilites {
     private float currentMana;
     private float currentBurnout;
     private float currentXP;
-    private int currentLevel = 9999;
-
-    public static Capability<AM2Capabilities> INSTANCE = null;
+    private int currentLevel;
 
     private static enum SYNC_TYPE{
         CONTINGENCY (0x1),
@@ -174,10 +172,5 @@ public class AM2Capabilities implements IAM2Capabilites {
     @Override
     public int getMarkDimensionID() {
         return this.MarkDimensionID;
-    }
-
-
-    public static AM2Capabilities For(EntityLivingBase player) {
-        return (AM2Capabilities) player.getCapability(INSTANCE, null);
     }
 }

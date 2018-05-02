@@ -6,6 +6,7 @@ import am2.capabilities.AM2CapabilitiesStorage;
 import am2.handler.CapabilityHandler;
 import am2.handler.ConfigHandler;
 import am2.handler.EventHandler;
+import am2.handler.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,6 +27,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
         MinecraftForge.EVENT_BUS.register(new ConfigHandler());
+        MinecraftForge.EVENT_BUS.register(new RegistryHandler());
 
         CapabilityManager.INSTANCE.register(IAM2Capabilites.class, new AM2CapabilitiesStorage(),new AM2CapabilitiesFactory());
     }

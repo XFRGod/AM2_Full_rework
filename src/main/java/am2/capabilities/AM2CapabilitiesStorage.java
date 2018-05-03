@@ -14,7 +14,7 @@ public class AM2CapabilitiesStorage implements Capability.IStorage<IAM2Capabilit
     @Nullable
     @Override
     public NBTBase writeNBT(Capability<IAM2Capabilites> capability, IAM2Capabilites instance, EnumFacing side) {
-        System.out.println("Written to NBT");
+        System.out.println("Written to NBT " + instance.getCurrentMana());
         NBTTagCompound compound = new NBTTagCompound();
         compound = NBTUtils.getAM2Tag(compound);
         compound.setFloat("CurrentMana", instance.getCurrentMana());

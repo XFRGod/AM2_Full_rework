@@ -1,6 +1,7 @@
 package am2;
 
 import am2.proxy.CommonProxy;
+import am2.utils.LogHelper;
 import am2.utils.Reference;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -19,7 +20,6 @@ import java.util.logging.Logger;
 public class AM2{
     @Instance
     public static AM2 instance;
-    public static Logger logger = Logger.getLogger(Reference.NAME);
 
     @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
     public static CommonProxy proxy;
@@ -39,5 +39,5 @@ public class AM2{
         proxy.postInit(event);
     }
     @Mod.EventHandler
-    public static void loadComplete(FMLLoadCompleteEvent event) { logger.log(Level.FINE, "Successfully loaded Ars Magica!"); }
+    public static void loadComplete(FMLLoadCompleteEvent event) { LogHelper.info("Successfully loaded Ars Magica!"); }
 }

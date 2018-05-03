@@ -1,6 +1,5 @@
 package am2.client.gui;
 
-import am2.utils.LogHelper;
 import am2.utils.Reference;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -33,7 +32,6 @@ public class AMGUIIcons {
 	private AMGUIIcons(){ }
 
 	public void init(TextureMap textureMap){
-		LogHelper.info("REGISTERING GUI.");
 		manaBar 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID, "gui/icons/mana_bar"));
 		manaLevel 	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID, "gui/icons/mana_level"));
 
@@ -50,7 +48,6 @@ public class AMGUIIcons {
 		evilBook	  = textureMap.registerSprite(new ResourceLocation(Reference.MODID, "items/evilbook"));
 
 		gatewayPortal = textureMap.registerSprite(new ResourceLocation(Reference.MODID, "gui/icons/gateway"));
-
 		selectedRunes = textureMap.registerSprite(new ResourceLocation(Reference.MODID, "gui/icons/rune_selected_aura"));
 
 		frame 		  = textureMap.registerSprite(new ResourceLocation(Reference.MODID, "gui/icons/spellframe"));

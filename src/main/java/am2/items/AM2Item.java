@@ -1,6 +1,7 @@
 package am2.items;
 
 import am2.definitions.CreativeTabDefinitions;
+import am2.handler.RegistryHandler;
 import am2.utils.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -16,10 +17,11 @@ public class AM2Item extends Item {
         this.setUnlocalizedName(new ResourceLocation(Reference.MODID, name).toString());
         this.setRegistryName(new ResourceLocation(Reference.MODID, name));
         this.setCreativeTab(CreativeTabDefinitions.am2ct);
+        RegistryHandler.AddItemToRegistry(this);
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerRender(Item item){
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+    public void registerRender(){
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(this.getRegistryName(), "inventory"));
     }
 }

@@ -1,5 +1,6 @@
 package am2.capabilities;
 
+import am2.network.messages.AM2NBTMessage;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.common.capabilities.Capability;
 
@@ -172,5 +173,29 @@ public class AM2Capabilities implements IAM2Capabilites {
     @Override
     public int getMarkDimensionID() {
         return this.MarkDimensionID;
+    }
+
+
+    public void fromAM2NBTMessage(AM2NBTMessage input) {
+        this.setCurrentMana(input.getCurrMana());
+        this.setCurrentBurnout(input.getCurrBurnout());
+        this.setCurrentLevel(input.getCurrLevel());
+        this.setCurrentXP(input.getCurrXP());
+
+        this.setMarkX(input.getMarkX());
+        this.setMarkY(input.getMarkY());
+        this.setMarkZ(input.getMarkY());
+        this.setMarkDimensionID(input.getDimID());
+    }
+
+
+    public AM2Capabilities IncreaseLevelWithMana(int i) {
+        this.setMagicLevelWithMana(this.getCurrentLevel() + i);
+        return this;
+    }
+
+    public AM2Capabilities IncreaseLevel(int i) {
+        this.setCurrentLevel(this.getCurrentLevel() + i);
+        return this;
     }
 }

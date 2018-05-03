@@ -1,23 +1,23 @@
 package am2.handler;
 
-import am2.capabilities.IAM2Capabilites;
 import am2.capabilities.AM2CapabilitiesProvider;
-import am2.client.gui.config.ConfigGUI;
+import am2.utils.LogHelper;
 import am2.utils.Reference;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.client.GuiIngameForge;
-import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.fml.client.config.ConfigGuiType;
-import net.minecraftforge.fml.client.config.GuiConfig;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 
+@Mod.EventBusSubscriber(modid = Reference.MODID)
 public class EventHandler {
+    @SubscribeEvent
+    public void onPlayerClone(PlayerEvent.Clone event){
+        transferCapability(AM2CapabilitiesProvider.INSTANCE, AM2CapabilitiesProvider.For(event.getOriginal()), AM2CapabilitiesProvider.For(event.getEntityPlayer()));
+        LogHelper.info("Copied Capabilities");
+    }
+    private <T> void transferCapability(Capability<T> capability, T original, T target) {
+        LogHelper.info(original + " / " + target);
+        capability.getStorage().readNBT(capability, target, null, capability.getStorage().writeNBT(capability, original, null));
+    }
 }

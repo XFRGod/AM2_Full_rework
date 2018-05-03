@@ -4,3 +4,10 @@ out
 run
 .idea
 AM2_Full_rework.iml
+*.xml
+*.ipr
+AM2_Full_rework.iws
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+gradlew
+gradlew.bat

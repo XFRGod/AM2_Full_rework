@@ -1,10 +1,15 @@
-Reworking everything from the basemod
+Imporive the best ideas from the basemod
 Adding something new  -- New Terminus shape (Dragon's breath), new Contingency, new Spell Component Revive ?
 HU localization
-Making the repo public -- When ready
+Making the repo public -- already did because low IQ
 JEI implementation
 Arcane Compendium overhaul -- GuideAPI implementation until it's done
 Baubles integration
 OreDictionary
 Json recipies
 new MagicXP system -- XPOrbs, shelvedXP, overXP
+new and Better affinites, bonuses, spell modifier amalgamation for getting compound spells unlocked like steam
+new component type - Singular
+mobs - mob drops to help progression but not gate it
+bosses with da loot
+RF integration with electric affinity

@@ -206,4 +206,9 @@ public class AM2Capabilities implements IAM2Capabilites {
         this.setCurrentLevel(this.getCurrentLevel() + i);
         return this;
     }
+
+    public AM2Capabilities IncreaseXP(float i) {
+        this.setCurrentXP(this.getCurrentXP() + i);
+        return this;
+    }
 }

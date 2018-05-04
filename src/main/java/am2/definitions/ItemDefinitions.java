@@ -1,9 +1,6 @@
 package am2.definitions;
 
-import am2.items.ItemLevelStick;
-import am2.items.ItemMagicianOrb;
-import am2.items.ItemNBTReader;
-import am2.items.ItemServerDebug;
+import am2.items.*;
 
 public class ItemDefinitions {
 
@@ -15,4 +12,5 @@ public class ItemDefinitions {
     public static final ItemServerDebug itemServerDebug = new ItemServerDebug();
     public static final ItemMagicianOrb itemMagicianOrg = new ItemMagicianOrb();
     public static final ItemNBTReader itemNBTReader = new ItemNBTReader();
+    public static final ItemSpawnMagicOrb itemSpawnMagicOrb = new ItemSpawnMagicOrb();
 }

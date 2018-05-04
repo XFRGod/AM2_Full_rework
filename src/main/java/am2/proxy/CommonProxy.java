@@ -4,6 +4,7 @@ import am2.capabilities.IAM2Capabilites;
 import am2.capabilities.AM2CapabilitiesFactory;
 import am2.capabilities.AM2CapabilitiesStorage;
 import am2.definitions.BlockDefinitions;
+import am2.definitions.EntityDefinitions;
 import am2.definitions.ItemDefinitions;
 import am2.handler.*;
 import am2.network.handlers.AM2NBTServerMessageHandler;
@@ -27,6 +28,7 @@ public class CommonProxy {
 
         ItemDefinitions.INSTANCE.Load();
         BlockDefinitions.INSTANCE.Load();
+        EntityDefinitions.INSTANCE.Load();
 
         AM2PacketHandler.INSTANCE.registerMessage(AM2NBTServerMessageHandler.class, AM2NBTMessage.class, 0, Side.SERVER);
         CapabilityManager.INSTANCE.register(IAM2Capabilites.class, new AM2CapabilitiesStorage(),new AM2CapabilitiesFactory());

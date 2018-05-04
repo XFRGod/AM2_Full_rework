@@ -7,6 +7,7 @@ import am2.utils.LogHelper;
 import am2.utils.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.SoundEvent;
@@ -17,6 +18,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import am2.items.ItemLevelStick;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -33,6 +36,7 @@ public class RegistryHandler {
     private static List<Potion> potionsToRegister;
     private static List<Biome> biomesToRegister;
     private static List<Enchantment> enchantmentsToRegister;
+    private static List<EntityEntry> entitiesToRegister;
 
     public static List<Item> GetItemsToRegister() {
         if (itemsToRegister == null) itemsToRegister = new ArrayList<>();
@@ -64,6 +68,11 @@ public class RegistryHandler {
         return enchantmentsToRegister;
     }
 
+    public static List <EntityEntry> GetEntitiesToRegister() {
+        if (entitiesToRegister == null) entitiesToRegister = new ArrayList<>();
+        return entitiesToRegister;
+    }
+
     public static void AddItemToRegistry(Item item) {
         if (itemsToRegister == null) itemsToRegister = new ArrayList<>();
         itemsToRegister.add(item);
@@ -74,12 +83,25 @@ public class RegistryHandler {
         blocksToRegister.add(block);
     }
 
+    public static void AddEntityToRegistry(EntityEntry entity) {
+        if (entitiesToRegister == null) entitiesToRegister = new ArrayList<>();
+        entitiesToRegister.add(entity);
+    }
+
     @SubscribeEvent
     public static void registerBlocks ( RegistryEvent.Register <Block> event ) {
 
         for ( Block block : RegistryHandler.GetBlocksToRegister ( ) ) {
             LogHelper.info("Registering Block:" + block.getRegistryName() + "/ UnLoc: " + block.getUnlocalizedName());
             event.getRegistry().register(block);
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerEntities ( RegistryEvent.Register <EntityEntry> event ) {
+
+        for ( EntityEntry entity : RegistryHandler.GetEntitiesToRegister ( ) ) {
+            event.getRegistry().register(entity);
         }
     }
 

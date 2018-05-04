@@ -1,14 +1,9 @@
 package am2.items;
 
 import am2.capabilities.AM2CapabilitiesProvider;
-import am2.network.handlers.AM2NBTMessageHandler;
-import am2.network.handlers.AM2PacketHandler;
+import am2.handler.AM2PacketHandler;
 import am2.network.messages.AM2NBTMessage;
-import am2.utils.Reference;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;

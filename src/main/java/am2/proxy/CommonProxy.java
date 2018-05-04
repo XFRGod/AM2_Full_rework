@@ -6,8 +6,7 @@ import am2.capabilities.AM2CapabilitiesStorage;
 import am2.definitions.BlockDefinitions;
 import am2.definitions.ItemDefinitions;
 import am2.handler.*;
-import am2.network.handlers.AM2NBTMessageHandler;
-import am2.network.handlers.AM2PacketHandler;
+import am2.network.handlers.AM2NBTServerMessageHandler;
 import am2.network.messages.AM2NBTMessage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -21,7 +20,6 @@ import net.minecraftforge.fml.relauncher.Side;
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event){
-        MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
         MinecraftForge.EVENT_BUS.register(new ConfigHandler());
         MinecraftForge.EVENT_BUS.register(new RegistryHandler());
@@ -30,7 +28,7 @@ public class CommonProxy {
         ItemDefinitions.INSTANCE.Load();
         BlockDefinitions.INSTANCE.Load();
 
-        AM2PacketHandler.INSTANCE.registerMessage(AM2NBTMessageHandler.class, AM2NBTMessage.class, 0, Side.SERVER);
+        AM2PacketHandler.INSTANCE.registerMessage(AM2NBTServerMessageHandler.class, AM2NBTMessage.class, 0, Side.SERVER);
         CapabilityManager.INSTANCE.register(IAM2Capabilites.class, new AM2CapabilitiesStorage(),new AM2CapabilitiesFactory());
     }
 

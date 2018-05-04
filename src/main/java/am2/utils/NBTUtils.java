@@ -8,9 +8,7 @@ public class NBTUtils {
     }
     public static NBTTagCompound addTag (NBTTagCompound upper, String name) {
         if (upper == null) throw new IllegalStateException("Base Tag must exist");
-        NBTTagCompound newTag = new NBTTagCompound();
-        upper.getCompoundTag(name);
-        newTag = upper.getCompoundTag(name);
+        NBTTagCompound newTag = upper.getCompoundTag(name);
         upper.setTag(name, newTag);
         return newTag;
     }

@@ -103,6 +103,14 @@ public class AM2Capabilities implements IAM2Capabilites {
     }
 
     @Override
+    public String toString() {
+        return String.format("Mana: %s\n" +
+                "Level: %s\n" +
+                "Burnout: %s\n" +
+                "XP: %s", this.getCurrentMana(), this.getCurrentLevel(), this.getCurrentBurnout(), this.getCurrentXP());
+    }
+
+    @Override
     public void setCurrentLevel(int currentLevel) {
         this.currentLevel = currentLevel;
     }

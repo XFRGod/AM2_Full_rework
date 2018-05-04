@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class AM2NBTMessageHandler implements IMessageHandler<AM2NBTMessage, IMessage> {
+public class AM2NBTServerMessageHandler implements IMessageHandler<AM2NBTMessage, IMessage> {
 
     @Override
     public IMessage onMessage(AM2NBTMessage message, MessageContext ctx) {
@@ -23,7 +23,7 @@ public class AM2NBTMessageHandler implements IMessageHandler<AM2NBTMessage, IMes
         }
 
         AM2Capabilities cap = AM2CapabilitiesProvider.For(ctx.getServerHandler().player);
-
+        LogHelper.info("Receiving message. Remote level: "+cap.getCurrentLevel()+" Message level: " + message.getCurrLevel());
         cap.fromAM2NBTMessage(message);
         return new AM2NBTMessage(cap);
     }

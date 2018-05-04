@@ -42,9 +42,10 @@ public class ItemMagicianOrb extends AM2Item {
             compound.setDouble("MarkY", instance.getMarkY());
             compound.setDouble("MarkZ", instance.getMarkZ());
             compound.setInteger("MarkDimensionID", instance.getMarkDimensionID());
-            playerIn.getHeldItem(handIn).setTagCompound(compound);
+            playerIn.sendMessage(new TextComponentString(playerIn.getHeldItem(handIn).getTagCompound().toString()));
             return ActionResult.newResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         } else {
+            playerIn.sendMessage(new TextComponentString(playerIn.getHeldItem(handIn).getTagCompound().toString()));
             NBTTagCompound am2tag = NBTUtils.getAM2Tag(playerIn.getHeldItem(handIn).getTagCompound());
             AM2Capabilities instance = AM2CapabilitiesProvider.For(playerIn);
             instance.setCurrentMana(am2tag.getFloat("CurrentMana"));

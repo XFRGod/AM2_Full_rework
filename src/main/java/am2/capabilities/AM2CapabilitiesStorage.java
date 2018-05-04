@@ -15,25 +15,23 @@ public class AM2CapabilitiesStorage implements Capability.IStorage<IAM2Capabilit
     @Nullable
     @Override
     public NBTBase writeNBT(Capability<IAM2Capabilites> capability, IAM2Capabilites instance, EnumFacing side) {
-        System.out.println("Written to NBT " + instance.getCurrentMana());
         NBTTagCompound compound = new NBTTagCompound();
-        compound = NBTUtils.getAM2Tag(compound);
-        compound.setFloat("CurrentMana", instance.getCurrentMana());
-        compound.setInteger("CurrentLevel", instance.getCurrentLevel());
-        compound.setFloat("CurrentXP", instance.getCurrentXP());
-        compound.setFloat("CurrentBurnout", instance.getCurrentBurnout());
-
-        compound.setDouble("MarkX", instance.getMarkX());
-        compound.setDouble("MarkY", instance.getMarkY());
-        compound.setDouble("MarkZ", instance.getMarkZ());
-        compound.setInteger("MarkDimensionID", instance.getMarkDimensionID());
+        NBTTagCompound compound2 = NBTUtils.getAM2Tag(compound);
+        compound2.setFloat("CurrentMana", instance.getCurrentMana());
+        compound2.setInteger("CurrentLevel", instance.getCurrentLevel());
+        compound2.setFloat("CurrentXP", instance.getCurrentXP());
+        compound2.setFloat("CurrentBurnout", instance.getCurrentBurnout());
+                
+        compound2.setDouble("MarkX", instance.getMarkX());
+        compound2.setDouble("MarkY", instance.getMarkY());
+        compound2.setDouble("MarkZ", instance.getMarkZ());
+        compound2.setInteger("MarkDimensionID", instance.getMarkDimensionID());
         return compound;
     }
 
     @Override
     public void readNBT(Capability<IAM2Capabilites> capability, IAM2Capabilites instance, EnumFacing side, NBTBase nbt) {
-        NBTTagCompound am2tag = ((NBTTagCompound)nbt).getCompoundTag("AM2");
-        LogHelper.info("Writing NBT " + am2tag.getInteger("CurrentLevel"));
+        NBTTagCompound am2tag = NBTUtils.getAM2Tag((NBTTagCompound)nbt);
         instance.setCurrentMana(am2tag.getFloat("CurrentMana"));
         instance.setCurrentLevel(am2tag.getInteger("CurrentLevel"));
         instance.setCurrentXP(am2tag.getFloat("CurrentXP"));

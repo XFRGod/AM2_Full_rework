@@ -7,3 +7,4 @@ Arcane Compendium overhaul -- GuideAPI implementation until it's done
 Baubles integration
 OreDictionary
 Json recipies
+new MagicXP system -- XPOrbs, shelvedXP, overXP

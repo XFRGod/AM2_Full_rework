@@ -1,6 +1,6 @@
 {
   "parent": "builtin/generated",
   "textures" : {
-    "layer0" : "items/item/stick"
+    "layer0" : "minecraft:items/stick"
   }
 }

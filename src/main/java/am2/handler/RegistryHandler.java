@@ -141,6 +141,7 @@ public class RegistryHandler {
     public static void AM2GUIRegister(TextureStitchEvent.Pre e) {
         AMGUIIcons.instance.init(e.getMap());
     }
+<<<<<<< HEAD
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -148,5 +149,10 @@ public class RegistryHandler {
         for ( Item item : RegistryHandler.GetItemsToRegister ( ) ) {
             ((AM2Item)item).registerRender();
         }
+=======
+    @SideOnly(Side.CLIENT)
+    public void registerItemRenderers(Item item) {
+        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+>>>>>>> f18f56b1c75b029fa8bf804f279811f830d94279
     }
 }

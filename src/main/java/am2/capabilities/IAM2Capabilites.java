@@ -12,6 +12,7 @@ public interface IAM2Capabilites {
     double getMarkX();
     double getMarkY();
     double getMarkZ();
+    boolean getDoUpdate();
 
     void setCurrentBurnout(float currentBurnout);
     void setCurrentLevel(int currentLevel);
@@ -23,8 +24,11 @@ public interface IAM2Capabilites {
     void setMarkZ(double markZ);
     void setMarkDimensionID(int markDimensionID);
     void setMark(double x, double y, double z, int dimID);
+    void update();
 
     boolean hasEnoughMana(float cost);
+
+    boolean decreaseMana(float amount);
 
     int getMarkDimensionID();
 }

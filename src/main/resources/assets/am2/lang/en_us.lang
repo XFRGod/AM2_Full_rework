@@ -19,5 +19,6 @@ config.am2:client.mananumericposition=Numeric Mana HUD position
 config.am2:client.burnoutnumericposition=Numeric Burnout HUD position
 config.am2:client.magicxpnumericposition=Numeric magic XP HUD position
 
+
 #Items
-item.am2:debugstick.name=Debug Stick
+item.am2:levelstick.name=Level Stick

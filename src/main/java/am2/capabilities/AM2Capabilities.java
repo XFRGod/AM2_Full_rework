@@ -12,6 +12,7 @@ public class AM2Capabilities implements IAM2Capabilites {
     private float currentBurnout;
     private float currentXP;
     private int currentLevel;
+    private boolean doUpdate;
 
     private static enum SYNC_TYPE{
         CONTINGENCY (0x1),
@@ -95,11 +96,22 @@ public class AM2Capabilities implements IAM2Capabilites {
     }
 
     @Override
+    public boolean getDoUpdate() {
+        return doUpdate;
+    }
+
+    @Override
     public void setCurrentBurnout(float currentBurnout) {
         if (this.currentBurnout != currentBurnout) {
             this.addSyncCode(SYNC_TYPE.FATIGUE.value());
             this.currentBurnout = currentBurnout;
+            doUpdate = true;
         }
+    }
+
+    @Override
+    public void update() {
+        doUpdate = false;
     }
 
     @Override
@@ -113,6 +125,7 @@ public class AM2Capabilities implements IAM2Capabilites {
     @Override
     public void setCurrentLevel(int currentLevel) {
         this.currentLevel = currentLevel;
+        doUpdate = true;
     }
 
     @Override
@@ -120,6 +133,7 @@ public class AM2Capabilities implements IAM2Capabilites {
         if (this.currentMana != currentMana) {
             this.addSyncCode(SYNC_TYPE.MANA.value());
             this.currentMana = currentMana;
+            doUpdate = true;
         }
     }
 
@@ -133,6 +147,7 @@ public class AM2Capabilities implements IAM2Capabilites {
             }
             this.addSyncCode(SYNC_TYPE.XP.value());
             this.currentXP = currentXP;
+            doUpdate = true;
         }
     }
 
@@ -142,27 +157,32 @@ public class AM2Capabilities implements IAM2Capabilites {
         this.setCurrentLevel(level);
         this.setCurrentMana(this.getMaxMana());
         this.setCurrentBurnout(0);
+        doUpdate = true;
         return true;
     }
 
     @Override
     public void setMarkX(double MarkX) {
         this.MarkX = MarkX;
+        doUpdate = true;
     }
 
     @Override
     public void setMarkY(double MarkY) {
         this.MarkY = MarkY;
+        doUpdate = true;
     }
 
     @Override
     public void setMarkZ(double MarkZ) {
         this.MarkZ = MarkZ;
+        doUpdate = true;
     }
 
     @Override
     public void setMarkDimensionID(int MarkDimensionID) {
         this.MarkDimensionID = MarkDimensionID;
+        doUpdate = true;
     }
 
     @Override
@@ -171,11 +191,21 @@ public class AM2Capabilities implements IAM2Capabilites {
         this.MarkY = y;
         this.MarkZ = z;
         this.MarkDimensionID = dimID;
+        doUpdate = true;
     }
 
     @Override
     public boolean hasEnoughMana(float cost) {
-        return cost < getCurrentMana();
+        return cost <= getCurrentMana();
+    }
+
+    @Override
+    public boolean decreaseMana(float amount) {
+        if (hasEnoughMana(amount)) {
+            setCurrentMana(getCurrentMana() - amount);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -194,21 +224,26 @@ public class AM2Capabilities implements IAM2Capabilites {
         this.setMarkY(input.getMarkY());
         this.setMarkZ(input.getMarkY());
         this.setMarkDimensionID(input.getDimID());
+
+        doUpdate = true;
     }
 
 
     public AM2Capabilities IncreaseLevelWithMana(int i) {
         this.setMagicLevelWithMana(this.getCurrentLevel() + i);
+        doUpdate = true;
         return this;
     }
 
     public AM2Capabilities IncreaseLevel(int i) {
         this.setCurrentLevel(this.getCurrentLevel() + i);
+        doUpdate = true;
         return this;
     }
 
     public AM2Capabilities IncreaseXP(float i) {
         this.setCurrentXP(this.getCurrentXP() + i);
+        doUpdate = true;
         return this;
     }
 }

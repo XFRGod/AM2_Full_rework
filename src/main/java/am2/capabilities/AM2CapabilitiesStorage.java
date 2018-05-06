@@ -26,6 +26,8 @@ public class AM2CapabilitiesStorage implements Capability.IStorage<IAM2Capabilit
         compound2.setDouble("MarkY", instance.getMarkY());
         compound2.setDouble("MarkZ", instance.getMarkZ());
         compound2.setInteger("MarkDimensionID", instance.getMarkDimensionID());
+
+        compound2.setBoolean("DoUpdate", instance.getDoUpdate());
         return compound;
     }
 

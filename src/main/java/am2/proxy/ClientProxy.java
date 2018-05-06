@@ -15,4 +15,5 @@ public class ClientProxy extends CommonProxy{
         super.preInit(event);
         MinecraftForge.EVENT_BUS.register(new AMGUI());
     }
+
 }

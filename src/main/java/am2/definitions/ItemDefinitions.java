@@ -12,5 +12,5 @@ public class ItemDefinitions {
     public static final ItemServerDebug itemServerDebug = new ItemServerDebug();
     public static final ItemMagicianOrb itemMagicianOrg = new ItemMagicianOrb();
     public static final ItemNBTReader itemNBTReader = new ItemNBTReader();
-    public static final ItemSpawnMagicOrb itemSpawnMagicOrb = new ItemSpawnMagicOrb();
+    public static final ItemFireBall itemFireBall = new ItemFireBall();
 }

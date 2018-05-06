@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 public class AM2NBTMessage implements IMessage {
 
     public AM2NBTMessage(float CurrentMana, int CurrentLevel, float CurrentXP,
-                         float CurrentBurnout, double MarkX, double MarkY, double MarkZ, int DimensionID){
+                         float CurrentBurnout, double MarkX, double MarkY, double MarkZ, int DimensionID, boolean DoUpdate){
         currMana = CurrentMana;
         currLevel = CurrentLevel;
         currXP = CurrentXP;
@@ -18,6 +18,8 @@ public class AM2NBTMessage implements IMessage {
         markY = MarkY;
         markZ = MarkZ;
         dimID = DimensionID;
+
+        doUpdate = DoUpdate;
     }
     
     public AM2NBTMessage(AM2Capabilities input) {
@@ -30,6 +32,8 @@ public class AM2NBTMessage implements IMessage {
         markY = input.getMarkY();
         markZ = input.getMarkZ();
         dimID = input.getMarkDimensionID();
+
+        doUpdate = input.getDoUpdate();
     }
 
     public AM2NBTMessage() {
@@ -67,6 +71,8 @@ public class AM2NBTMessage implements IMessage {
         return dimID;
     }
 
+    public boolean getDoUpdate() { return doUpdate; }
+
     float   currMana;
     int     currLevel;
     float   currXP;
@@ -76,6 +82,8 @@ public class AM2NBTMessage implements IMessage {
     double  markY;
     double  markZ;
     int     dimID;
+
+    boolean doUpdate;
 
 
     /*
@@ -104,6 +112,8 @@ public class AM2NBTMessage implements IMessage {
             markY = buf.readDouble();
             markZ = buf.readDouble();
             dimID = buf.readInt();
+
+            doUpdate = buf.readBoolean();
         } catch (Exception e) {
             LogHelper.error("Error reading NetworkMessage.\n Stacktrace: " + e);
         }
@@ -120,5 +130,7 @@ public class AM2NBTMessage implements IMessage {
         buf.writeDouble(markY);
         buf.writeDouble(markZ);
         buf.writeInt(dimID);
+
+        buf.writeBoolean(doUpdate);
     }
 }

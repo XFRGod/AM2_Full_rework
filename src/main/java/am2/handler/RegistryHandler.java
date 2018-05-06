@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -90,9 +91,7 @@ public class RegistryHandler {
 
     @SubscribeEvent
     public static void registerBlocks ( RegistryEvent.Register <Block> event ) {
-
         for ( Block block : RegistryHandler.GetBlocksToRegister ( ) ) {
-            LogHelper.info("Registering Block:" + block.getRegistryName() + "/ UnLoc: " + block.getUnlocalizedName());
             event.getRegistry().register(block);
         }
     }
@@ -107,9 +106,7 @@ public class RegistryHandler {
 
     @SubscribeEvent
     public static void registerItems ( RegistryEvent.Register <Item> event ) {
-        LogHelper.info("Registered Items");
         for ( Item item : RegistryHandler.GetItemsToRegister ( ) ) {
-            LogHelper.info("Registering Item:" + item.getRegistryName() + "/ UnLoc: " + item.getUnlocalizedName());
             event.getRegistry().register(item);
         }
     }
@@ -134,14 +131,22 @@ public class RegistryHandler {
     }
 
     @SubscribeEvent
-    public void registerEnchantments ( RegistryEvent.Register <Enchantment> event ) {
+    public static void registerEnchantments ( RegistryEvent.Register <Enchantment> event ) {
         for (Enchantment encha : RegistryHandler.GetEnchantmentsToRegister())
             event.getRegistry().register(encha);
     }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    public void AM2GUIRegister(TextureStitchEvent.Pre e) {
+    public static void AM2GUIRegister(TextureStitchEvent.Pre e) {
         AMGUIIcons.instance.init(e.getMap());
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void registerModels(ModelRegistryEvent event) {
+        for ( Item item : RegistryHandler.GetItemsToRegister ( ) ) {
+            ((AM2Item)item).registerRender();
+        }
     }
 }

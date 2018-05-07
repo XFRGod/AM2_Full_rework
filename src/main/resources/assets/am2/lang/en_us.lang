@@ -22,3 +22,4 @@ config.am2:client.magicxpnumericposition=Numeric magic XP HUD position
 
 #Items
 item.am2:levelstick.name=Level Stick
+item.am2:magicianorb.name=Magician's Orb

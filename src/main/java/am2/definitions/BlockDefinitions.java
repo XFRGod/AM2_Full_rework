@@ -1,6 +1,6 @@
 package am2.definitions;
 
-import am2.blocks.BlockOracle;
+import am2.blocks.BlockOracleBase;
 
 public class BlockDefinitions {
 
@@ -8,5 +8,5 @@ public class BlockDefinitions {
 
     public static BlockDefinitions INSTANCE = new BlockDefinitions();
 
-    public static final BlockOracle blockOracle = new BlockOracle();
+    public static final BlockOracleBase blockOracle = new BlockOracleBase();
 }

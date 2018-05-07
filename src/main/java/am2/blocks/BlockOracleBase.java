@@ -11,17 +11,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-public class BlockOracle extends AM2Block {
+public class BlockOracleBase extends AM2Block {
 
-    public BlockOracle() {
-        super("oracle", Material.ROCK, MapColor.BLACK);
+    public BlockOracleBase() {
+        super("oraclebase", Material.ROCK, MapColor.BLACK);
     }
 
-    @Override
+    /*@Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         playerIn.sendMessage(new TextComponentString(AM2CapabilitiesProvider.For(playerIn).toString()));
         return true ;
-    }
+    }*/
 
 }

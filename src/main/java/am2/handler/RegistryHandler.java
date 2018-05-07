@@ -1,9 +1,12 @@
 package am2.handler;
 
+import am2.blocks.AM2Block;
+import am2.blocks.AM2BlockContainer;
 import am2.blocks.tileentity.AM2TileEntity;
 import am2.client.gui.AMGUIIcons;
 import am2.definitions.ItemDefinitions;
 import am2.items.AM2Item;
+import am2.utils.AM2ItemBlock;
 import am2.utils.LogHelper;
 import am2.utils.Reference;
 import net.minecraft.block.Block;
@@ -98,11 +101,13 @@ public class RegistryHandler {
 
     public static void AddItemToRegistry(Item item) {
         if (itemsToRegister == null) itemsToRegister = new ArrayList<>();
+        LogHelper.info("Adding item to registry: " + item.getUnlocalizedName());
         itemsToRegister.add(item);
     }
 
     public static void AddBlockToRegistry(Block block) {
         if (blocksToRegister == null) blocksToRegister = new ArrayList<>();
+        LogHelper.info("Adding block to registry: " + block.getUnlocalizedName());
         blocksToRegister.add(block);
     }
 
@@ -137,8 +142,11 @@ public class RegistryHandler {
 
     @SubscribeEvent
     public static void registerItems ( RegistryEvent.Register <Item> event ) {
+        LogHelper.info("Registering Items");
+
         for ( Item item : RegistryHandler.GetItemsToRegister ( ) ) {
             event.getRegistry().register(item);
+            LogHelper.info("Registering Item:" + item.getRegistryName() + "/ UnLoc: " + item.getUnlocalizedName());
         }
     }
 
@@ -188,9 +196,14 @@ public class RegistryHandler {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event) {
+    public static void registerItemodels(ModelRegistryEvent event) {
         for (Item item : RegistryHandler.GetItemsToRegister()) {
-            ((AM2Item) item).registerRender();
+            if (item instanceof AM2Item) ((AM2Item)item).registerRender();
+            if (item instanceof AM2ItemBlock) ((AM2ItemBlock)item).registerRender();
+        }
+        for (Block block : RegistryHandler.GetBlocksToRegister()) {
+            if (block instanceof AM2Block) ((AM2Block) block).registerRender(block);
+            if (block instanceof AM2BlockContainer) ((AM2BlockContainer) block).registerRender(block);
         }
     }
 

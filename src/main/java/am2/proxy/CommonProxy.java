@@ -27,8 +27,8 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new RegistryHandler());
         MinecraftForge.EVENT_BUS.register(new NetworkHandler());
 
-        ItemDefinitions.INSTANCE.Load();
         BlockDefinitions.INSTANCE.Load();
+        ItemDefinitions.INSTANCE.Load();
         EntityDefinitions.INSTANCE.Load();
 
         AM2PacketHandler.INSTANCE.registerMessage(AM2NBTClientMessageHandler.class, AM2NBTMessage.class, 0, Side.CLIENT);

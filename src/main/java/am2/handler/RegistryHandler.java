@@ -1,5 +1,6 @@
 package am2.handler;
 
+import am2.blocks.tileentity.AM2TileEntity;
 import am2.client.gui.AMGUIIcons;
 import am2.definitions.ItemDefinitions;
 import am2.items.AM2Item;
@@ -12,6 +13,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -33,6 +35,10 @@ import java.util.List;
 @GameRegistry.ObjectHolder(Reference.MODID)
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public class RegistryHandler {
+
+
+    //region List of Registries.
+
     private static List<Item> itemsToRegister;
     private static List<Block> blocksToRegister;
     private static List<SoundEvent> soundsToRegister;
@@ -40,6 +46,11 @@ public class RegistryHandler {
     private static List<Biome> biomesToRegister;
     private static List<Enchantment> enchantmentsToRegister;
     private static List<EntityEntry> entitiesToRegister;
+    private static List<TileEntity> tileEntitiesToRegister;
+
+    //endregion
+
+    //region List Getters
 
     public static List<Item> GetItemsToRegister() {
         if (itemsToRegister == null) itemsToRegister = new ArrayList<>();
@@ -76,6 +87,15 @@ public class RegistryHandler {
         return entitiesToRegister;
     }
 
+    public static List<TileEntity> GetTileEntitiesToRegister() {
+        if (tileEntitiesToRegister == null) tileEntitiesToRegister = new ArrayList<>();
+        return tileEntitiesToRegister;
+    }
+
+    //endregion
+
+    //region Registry List
+
     public static void AddItemToRegistry(Item item) {
         if (itemsToRegister == null) itemsToRegister = new ArrayList<>();
         itemsToRegister.add(item);
@@ -90,6 +110,15 @@ public class RegistryHandler {
         if (entitiesToRegister == null) entitiesToRegister = new ArrayList<>();
         entitiesToRegister.add(entity);
     }
+
+    public static void AddTileEntityToRegistry(TileEntity entity) {
+        if (tileEntitiesToRegister == null) tileEntitiesToRegister = new ArrayList<>();
+        tileEntitiesToRegister.add(entity);
+    }
+
+    //endregion
+
+    //region Registry Events
 
     @SubscribeEvent
     public static void registerBlocks ( RegistryEvent.Register <Block> event ) {
@@ -137,6 +166,19 @@ public class RegistryHandler {
         for (Enchantment encha : RegistryHandler.GetEnchantmentsToRegister())
             event.getRegistry().register(encha);
     }
+
+    public static void registerTileEntites () {
+        for (TileEntity entity : RegistryHandler.GetTileEntitiesToRegister()) {
+            GameRegistry.registerTileEntity(entity.getClass(), ((AM2TileEntity)entity).getName());
+        }
+    }
+
+    //endregion
+
+
+    ///
+    ///                 Miscellaneous Events.
+    ///
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent

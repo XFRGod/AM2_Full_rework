@@ -45,19 +45,25 @@ public class ItemMagicianOrb extends AM2Item {
             playerIn.sendMessage(new TextComponentString(playerIn.getHeldItem(handIn).getTagCompound().toString()));
             return ActionResult.newResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         } else {
-            playerIn.sendMessage(new TextComponentString(playerIn.getHeldItem(handIn).getTagCompound().toString()));
-            NBTTagCompound am2tag = NBTUtils.getAM2Tag(playerIn.getHeldItem(handIn).getTagCompound());
-            AM2Capabilities instance = AM2CapabilitiesProvider.For(playerIn);
-            instance.setCurrentMana(am2tag.getFloat("CurrentMana"));
-            instance.setCurrentLevel(am2tag.getInteger("CurrentLevel"));
-            instance.setCurrentXP(am2tag.getFloat("CurrentXP"));
-            instance.setCurrentBurnout(am2tag.getFloat("CurrentBurnout"));
+            if (playerIn.getHeldItem(handIn).getTagCompound() == null){
+                if (!worldIn.isRemote) playerIn.sendMessage(new TextComponentString("Use Shift+Right-Click first!"));
+                return ActionResult.newResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+            }
+            else {
+                playerIn.sendMessage(new TextComponentString(playerIn.getHeldItem(handIn).getTagCompound().toString()));
+                NBTTagCompound am2tag = NBTUtils.getAM2Tag(playerIn.getHeldItem(handIn).getTagCompound());
+                AM2Capabilities instance = AM2CapabilitiesProvider.For(playerIn);
+                instance.setCurrentMana(am2tag.getFloat("CurrentMana"));
+                instance.setCurrentLevel(am2tag.getInteger("CurrentLevel"));
+                instance.setCurrentXP(am2tag.getFloat("CurrentXP"));
+                instance.setCurrentBurnout(am2tag.getFloat("CurrentBurnout"));
 
-            instance.setMarkX(am2tag.getDouble("MarkX"));
-            instance.setMarkY(am2tag.getDouble("MarkY"));
-            instance.setMarkZ(am2tag.getDouble("MarkZ"));
-            instance.setMarkDimensionID(am2tag.getInteger("MarkDimensionID"));
-            return ActionResult.newResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+                instance.setMarkX(am2tag.getDouble("MarkX"));
+                instance.setMarkY(am2tag.getDouble("MarkY"));
+                instance.setMarkZ(am2tag.getDouble("MarkZ"));
+                instance.setMarkDimensionID(am2tag.getInteger("MarkDimensionID"));
+                return ActionResult.newResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+            }
         }
     }
 
@@ -75,8 +81,12 @@ public class ItemMagicianOrb extends AM2Item {
             tooltip.add("Z: " + compound.getDouble("MarkZ"));
             tooltip.add("DimID: " + compound.getInteger("MarkDimensionID"));
         } else {
-            tooltip.add("Unsaved. Shift Rightclick to save.");
+            tooltip.add("Unsaved. Shift+Right-Click to save.");
         }
     }
 
+    @Override
+    public boolean hasEffect(ItemStack par1ItemStack){
+        return true;
+    }
 }

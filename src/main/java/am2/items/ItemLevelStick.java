@@ -28,4 +28,8 @@ public class ItemLevelStick extends AM2Item {
         super("levelstick");
         setMaxStackSize(1);
     }
+    @Override
+    public boolean hasEffect(ItemStack par1ItemStack) {
+        return true;
+    }
 }

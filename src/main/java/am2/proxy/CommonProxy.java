@@ -10,12 +10,14 @@ import am2.definitions.ItemDefinitions;
 import am2.handler.*;
 import am2.network.handlers.AM2NBTServerMessageHandler;
 import am2.network.messages.AM2NBTMessage;
+import am2.world.OreGen;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod.EventBusSubscriber
@@ -36,7 +38,9 @@ public class CommonProxy {
         CapabilityManager.INSTANCE.register(IAM2Capabilites.class, new AM2CapabilitiesStorage(),new AM2CapabilitiesFactory());
     }
 
-    public void init(FMLInitializationEvent event){}
+    public void init(FMLInitializationEvent event){
+        GameRegistry.registerWorldGenerator(new OreGen(), 0);
+    }
 
     public void postInit(FMLPostInitializationEvent event){
     }

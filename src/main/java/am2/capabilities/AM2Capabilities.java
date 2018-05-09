@@ -14,7 +14,7 @@ public class AM2Capabilities implements IAM2Capabilites {
     private int currentLevel;
     private boolean doUpdate;
 
-    private static enum SYNC_TYPE{
+    /*private static enum SYNC_TYPE{
         CONTINGENCY (0x1),
         MARK        (0x2),
         MANA        (0x4),
@@ -37,13 +37,11 @@ public class AM2Capabilities implements IAM2Capabilites {
         //HEAL_COOLDOWN,
         //AFFINITY_HEAL_COOLDOWN,
         //DISABLE_GRAVITY
-    }
+    }*/
 
     private double MarkX, MarkY, MarkZ;
 
-    private void addSyncCode(int code) {
-        this.syncCode |= code;
-    }
+    //private void addSyncCode(int code) { this.syncCode |= code; }
 
     @Override
     public float getCurrentMana() {
@@ -103,7 +101,7 @@ public class AM2Capabilities implements IAM2Capabilites {
     @Override
     public void setCurrentBurnout(float currentBurnout) {
         if (this.currentBurnout != currentBurnout) {
-            this.addSyncCode(SYNC_TYPE.FATIGUE.value());
+            //this.addSyncCode(SYNC_TYPE.FATIGUE.value());
             this.currentBurnout = currentBurnout;
             doUpdate = true;
         }
@@ -131,7 +129,7 @@ public class AM2Capabilities implements IAM2Capabilites {
     @Override
     public void setCurrentMana(float currentMana){
         if (this.currentMana != currentMana) {
-            this.addSyncCode(SYNC_TYPE.MANA.value());
+            //this.addSyncCode(SYNC_TYPE.MANA.value());
             this.currentMana = currentMana;
             doUpdate = true;
         }
@@ -145,7 +143,7 @@ public class AM2Capabilities implements IAM2Capabilites {
                 currentXP -= this.getMaxXP();
                 this.setMagicLevelWithMana(this.getCurrentLevel() + 1);
             }
-            this.addSyncCode(SYNC_TYPE.XP.value());
+            //this.addSyncCode(SYNC_TYPE.XP.value());
             this.currentXP = currentXP;
             doUpdate = true;
         }

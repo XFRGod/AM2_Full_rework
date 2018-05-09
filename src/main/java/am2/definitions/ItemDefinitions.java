@@ -1,10 +1,14 @@
 package am2.definitions;
 
 import am2.items.*;
+import am2.utils.Reference;
+import net.minecraft.item.ItemFood;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
+@GameRegistry.ObjectHolder(Reference.MODID)
 public class ItemDefinitions {
 
-    public void Load() {}
+    public void Load() { }
 
     public static ItemDefinitions INSTANCE = new ItemDefinitions();
 
@@ -13,4 +17,6 @@ public class ItemDefinitions {
     public static final ItemMagicianOrb itemMagicianOrg = new ItemMagicianOrb();
     public static final ItemNBTReader itemNBTReader = new ItemNBTReader();
     public static final ItemFireBall itemFireBall = new ItemFireBall();
+    public static final ItemSalt itemSalt = new ItemSalt();
+    public static final ItemSaltedBakedPotato saltedBakedPotato = new ItemSaltedBakedPotato();
 }

@@ -1,0 +1,6 @@
+{
+  "parent" : "item/handheld",
+  "textures" : {
+    "layer0" : "am2:items/salted_baked_potato"
+  }
+}

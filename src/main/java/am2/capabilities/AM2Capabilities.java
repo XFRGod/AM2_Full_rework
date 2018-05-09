@@ -1,7 +1,10 @@
 package am2.capabilities;
 
 import am2.network.messages.AM2NBTMessage;
+import am2.utils.NBTUtils;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.capabilities.Capability;
 
 public class AM2Capabilities implements IAM2Capabilites {
@@ -224,6 +227,20 @@ public class AM2Capabilities implements IAM2Capabilites {
         this.setMarkDimensionID(input.getDimID());
 
         doUpdate = true;
+    }
+
+    public AM2Capabilities fromNBT(NBTBase input) {
+        NBTTagCompound am2tag = NBTUtils.getAM2Tag((NBTTagCompound)input);
+        this.setCurrentMana(am2tag.getFloat("CurrentMana"));
+        this.setCurrentLevel(am2tag.getInteger("CurrentLevel"));
+        this.setCurrentXP(am2tag.getFloat("CurrentXP"));
+        this.setCurrentBurnout(am2tag.getFloat("CurrentBurnout"));
+
+        this.setMarkX(am2tag.getDouble("MarkX"));
+        this.setMarkY(am2tag.getDouble("MarkY"));
+        this.setMarkZ(am2tag.getDouble("MarkZ"));
+        this.setMarkDimensionID(am2tag.getInteger("MarkDimensionID"));
+        return this;
     }
 
 

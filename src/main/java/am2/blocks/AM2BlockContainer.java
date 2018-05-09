@@ -2,6 +2,7 @@ package am2.blocks;
 
 import am2.definitions.CreativeTabDefinitions;
 import am2.handler.RegistryHandler;
+import am2.utils.MiscUtils;
 import am2.utils.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -20,28 +21,30 @@ public abstract class AM2BlockContainer extends BlockContainer {
     protected AM2BlockContainer(String name, Material materialIn) {
         super(materialIn);
         this.setUnlocalizedName(new ResourceLocation(Reference.MODID, name).toString());
-        this.setRegistryName(new ResourceLocation(Reference.MODID, name).toString());
+        this.setRegistryName(new ResourceLocation(Reference.MODID, name));
         this.setCreativeTab(CreativeTabDefinitions.am2ct);
         RegistryHandler.AddBlockToRegistry(this);
-        itemBlock = true;
+        RegistryHandler.AddItemToRegistry(MiscUtils.BlockToItemBlock(this));
     }
 
     protected AM2BlockContainer(String name) {
         super(Material.ROCK);
         this.setUnlocalizedName(new ResourceLocation(Reference.MODID, name).toString());
-        this.setRegistryName(new ResourceLocation(Reference.MODID, name).toString());
+        this.setRegistryName(new ResourceLocation(Reference.MODID, name));
         this.setCreativeTab(CreativeTabDefinitions.am2ct);
         RegistryHandler.AddBlockToRegistry(this);
-        itemBlock = true;
+        RegistryHandler.AddItemToRegistry(MiscUtils.BlockToItemBlock(this));
     }
 
     protected AM2BlockContainer(String name, boolean itemBlock) {
         super(Material.ROCK);
         this.setUnlocalizedName(new ResourceLocation(Reference.MODID, name).toString());
-        this.setRegistryName(new ResourceLocation(Reference.MODID, name).toString());
+        this.setRegistryName(new ResourceLocation(Reference.MODID, name));
         this.setCreativeTab(CreativeTabDefinitions.am2ct);
         RegistryHandler.AddBlockToRegistry(this);
         this.itemBlock = itemBlock;
+        if (itemBlock) RegistryHandler.AddItemToRegistry(MiscUtils.BlockToItemBlock(this));
+
     }
 
     public void notItemBlock() { this.itemBlock = false; }

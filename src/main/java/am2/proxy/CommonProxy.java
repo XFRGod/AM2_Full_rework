@@ -1,5 +1,6 @@
 package am2.proxy;
 
+import am2.AM2;
 import am2.capabilities.IAM2Capabilites;
 import am2.capabilities.AM2CapabilitiesFactory;
 import am2.capabilities.AM2CapabilitiesStorage;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -32,6 +34,8 @@ public class CommonProxy {
         BlockDefinitions.INSTANCE.Load();
         ItemDefinitions.INSTANCE.Load();
         EntityDefinitions.INSTANCE.Load();
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(AM2.instance, new GuiHandler());
 
         AM2PacketHandler.INSTANCE.registerMessage(AM2NBTClientMessageHandler.class, AM2NBTMessage.class, 0, Side.CLIENT);
         AM2PacketHandler.INSTANCE.registerMessage(AM2NBTServerMessageHandler.class, AM2NBTMessage.class, 0, Side.SERVER);

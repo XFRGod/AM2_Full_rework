@@ -23,3 +23,7 @@ config.am2:client.magicxpnumericposition=Numeric magic XP HUD position
 #Items
 item.am2:levelstick.name=Level Stick
 item.am2:magicianorb.name=Magician's Orb
+
+#Blocks
+tile.am2:oraclebase.name=Oracle Base
+tile.am2:oracle.name=Oracle

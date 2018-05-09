@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 public class ItemFireBall extends AM2Item {
 
     public ItemFireBall() {
-        super("firewall");
+        super("fireball");
     }
 
     @Override

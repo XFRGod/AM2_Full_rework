@@ -48,7 +48,7 @@ public class EventHandler {
         LogHelper.info("Adding Registry");
         RegistryBuilder affinity = new RegistryBuilder<Affinity>();
         affinity.setName(new ResourceLocation(Reference.MODID, "affinities"));
-        affinity.setType(Affinity.class).create();
+        affinity.setType(Affinity.class);
         affinity.setIDRange(0, 64);
         affinity.create();
     }

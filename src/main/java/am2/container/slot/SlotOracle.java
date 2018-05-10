@@ -17,7 +17,7 @@ public class SlotOracle extends SlotItemHandler {
     @Override
     public boolean isItemValid(@Nonnull ItemStack stack) {
         if (stack.isEmpty()) return false;
-        return stack.getItem() == ItemDefinitions.itemMagicianOrg;
+        return stack.getItem() == ItemDefinitions.itemMagicianOrb;
     }
 
 }

@@ -17,6 +17,7 @@ public class AffinityDefinitions {
     public static final Affinity dark = new Affinity("dark", 0x000000, new ResourceLocation(Reference.MODID, "affinities/dark"));
     public static final Affinity ender = new Affinity("ender", 0xcc00fa, new ResourceLocation(Reference.MODID, "affinities/ender"));
     public static final Affinity arcane = new Affinity("arcane", 0x000bff, new ResourceLocation(Reference.MODID, "affinities/arcane"));
+    public static final Affinity electricity = new Affinity("electricity", 0xf8ffb5, new ResourceLocation(Reference.MODID, "affinities/electricity"));
     public static final Affinity none = new Affinity("none", 0xbababa, new ResourceLocation(Reference.MODID, "affinities/none"));
 
 }

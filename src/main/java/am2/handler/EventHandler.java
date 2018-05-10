@@ -46,8 +46,11 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void addRegistry(RegistryEvent.NewRegistry event){
-        LogHelper.error("Adding Registry");
-        IForgeRegistry aff = new RegistryBuilder().setName(new ResourceLocation(Reference.MODID, "affinities")).setType(Affinity.class).create();
-        System.out.println(aff.getRegistrySuperType());
+        LogHelper.info("Adding Registry");
+        RegistryBuilder affinity = new RegistryBuilder<Affinity>();
+        affinity.setName(new ResourceLocation(Reference.MODID, "affinities"));
+        affinity.setType(Affinity.class).create();
+        affinity.setIDRange(0, 64);
+        affinity.create();
     }
 }

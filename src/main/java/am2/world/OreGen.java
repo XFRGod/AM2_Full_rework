@@ -9,7 +9,6 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import sun.rmi.runtime.Log;
 
 import java.util.Random;
 
@@ -19,7 +18,7 @@ public class OreGen implements IWorldGenerator {
 
     public OreGen(){
         oreblock_salt = new WorldGenMinable(BlockDefinitions.blockSaltOre.getDefaultState(),6);
-        LogHelper.info("registered oregen");
+        LogHelper.info("Registered oregen");
     }
 
     @Override
@@ -40,7 +39,7 @@ public class OreGen implements IWorldGenerator {
             int z = chunkZ * 16 + rand.nextInt(16);
 
             gen.generate(world, rand, new BlockPos(x, y, z));
+            LogHelper.info("Generated ore at:" + " " + x + " " + y + " " + z);
         }
-        LogHelper.info("generated ore at" + " " + chunkX + " " + " " + chunkZ);
     }
 }

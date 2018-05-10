@@ -1,10 +1,8 @@
 package am2.capabilities;
 
-import am2.utils.LogHelper;
 import am2.utils.NBTUtils;
 
 import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTPrimitive;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;

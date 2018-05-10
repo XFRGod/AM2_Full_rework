@@ -3,7 +3,6 @@ package am2.blocks;
 import am2.AM2;
 import am2.blocks.tileentity.TileEntityOracle;
 import am2.definitions.BlockDefinitions;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;

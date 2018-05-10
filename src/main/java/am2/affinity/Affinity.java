@@ -5,8 +5,6 @@ import am2.utils.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import java.util.LinkedHashMap;
-
 public class Affinity extends IForgeRegistryEntry.Impl<Affinity> implements IForgeRegistryEntry<Affinity> {
     String name;
     int color;

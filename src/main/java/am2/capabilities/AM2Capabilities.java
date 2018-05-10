@@ -2,14 +2,12 @@ package am2.capabilities;
 
 import am2.network.messages.AM2NBTMessage;
 import am2.utils.NBTUtils;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.capabilities.Capability;
 
 public class AM2Capabilities implements IAM2Capabilites {
 
-    private int syncCode = 0;
+    //private int syncCode = 0;
     private int MarkDimensionID = -512;
     private float currentMana;
     private float currentBurnout;

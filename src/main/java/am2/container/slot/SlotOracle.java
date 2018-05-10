@@ -3,7 +3,6 @@ package am2.container.slot;
 import am2.blocks.tileentity.TileEntityOracle;
 import am2.definitions.ItemDefinitions;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;

@@ -1,7 +1,6 @@
 package am2.blocks.tileentity;
 
 import am2.capabilities.AM2Capabilities;
-import am2.items.ItemMagicianOrb;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;

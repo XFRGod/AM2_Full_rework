@@ -30,7 +30,6 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
         MinecraftForge.EVENT_BUS.register(new ConfigHandler());
         MinecraftForge.EVENT_BUS.register(new RegistryHandler());
-        MinecraftForge.EVENT_BUS.register(new NetworkHandler());
 
         BlockDefinitions.INSTANCE.Load();
         ItemDefinitions.INSTANCE.Load();

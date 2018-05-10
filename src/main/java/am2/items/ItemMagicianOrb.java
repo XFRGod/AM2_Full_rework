@@ -1,7 +1,6 @@
 package am2.items;
 
 import am2.capabilities.AM2Capabilities;
-import am2.capabilities.AM2CapabilitiesFactory;
 import am2.capabilities.AM2CapabilitiesProvider;
 import am2.utils.NBTUtils;
 import net.minecraft.client.util.ITooltipFlag;

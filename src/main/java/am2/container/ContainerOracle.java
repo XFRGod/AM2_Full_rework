@@ -2,7 +2,6 @@ package am2.container;
 
 
 import am2.blocks.tileentity.TileEntityOracle;
-import am2.capabilities.AM2Capabilities;
 import am2.capabilities.AM2CapabilitiesProvider;
 import am2.container.slot.SlotOracle;
 import net.minecraft.entity.player.EntityPlayer;

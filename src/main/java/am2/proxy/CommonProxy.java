@@ -5,6 +5,7 @@ import am2.capabilities.IAM2Capabilites;
 import am2.capabilities.AM2CapabilitiesFactory;
 import am2.capabilities.AM2CapabilitiesStorage;
 import am2.client.network.handlers.AM2NBTClientMessageHandler;
+import am2.definitions.AffinityDefinitions;
 import am2.definitions.BlockDefinitions;
 import am2.definitions.EntityDefinitions;
 import am2.definitions.ItemDefinitions;
@@ -34,6 +35,7 @@ public class CommonProxy {
         BlockDefinitions.INSTANCE.Load();
         ItemDefinitions.INSTANCE.Load();
         EntityDefinitions.INSTANCE.Load();
+        AffinityDefinitions.INSTANCE.Load();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(AM2.instance, new GuiHandler());
 

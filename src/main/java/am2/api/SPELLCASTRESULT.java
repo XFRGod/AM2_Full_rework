@@ -1,8 +1,0 @@
-package am2.api;
-
-public enum SPELLCASTRESULT {
-    SUCCESS,
-    NOT_ENOUGH_MANA,
-    MALFORMED_SPELL_STACK,
-    SILENCED
-}

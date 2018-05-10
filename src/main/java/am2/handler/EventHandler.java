@@ -1,17 +1,22 @@
 package am2.handler;
 
+import am2.affinity.Affinity;
 import am2.capabilities.AM2CapabilitiesProvider;
 import am2.network.messages.AM2NBTMessage;
+import am2.utils.LogHelper;
 import am2.utils.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryBuilder;
 
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public class EventHandler {
@@ -37,5 +42,12 @@ public class EventHandler {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void addRegistry(RegistryEvent.NewRegistry event){
+        LogHelper.error("Adding Registry");
+        IForgeRegistry aff = new RegistryBuilder().setName(new ResourceLocation(Reference.MODID, "affinities")).setType(Affinity.class).create();
+        System.out.println(aff.getRegistrySuperType());
     }
 }

@@ -1,20 +1,17 @@
 package am2.handler;
 
+import am2.affinity.Affinity;
 import am2.blocks.AM2Block;
 import am2.blocks.AM2BlockContainer;
 import am2.blocks.tileentity.AM2TileEntity;
 import am2.client.gui.AMGUIIcons;
-import am2.definitions.ItemDefinitions;
 import am2.items.AM2Item;
 import am2.items.AM2ItemFood;
 import am2.utils.AM2ItemBlock;
 import am2.utils.LogHelper;
 import am2.utils.Reference;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
@@ -26,9 +23,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import am2.items.ItemLevelStick;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -51,6 +46,7 @@ public class RegistryHandler {
     private static List<Enchantment> enchantmentsToRegister;
     private static List<EntityEntry> entitiesToRegister;
     private static List<TileEntity> tileEntitiesToRegister;
+    private static List<Affinity> affinitiesToRegister;
 
     //endregion
 
@@ -96,6 +92,11 @@ public class RegistryHandler {
         return tileEntitiesToRegister;
     }
 
+    public static List<Affinity> GetAffinitiesToRegister() {
+        if (affinitiesToRegister == null) affinitiesToRegister = new ArrayList<>();
+        return affinitiesToRegister;
+    }
+
     //endregion
 
     //region Registry List
@@ -122,6 +123,11 @@ public class RegistryHandler {
         tileEntitiesToRegister.add(entity);
     }
 
+    public static void AddAffinityToRegistry(Affinity affinity) {
+        if (affinitiesToRegister == null) affinitiesToRegister = new ArrayList<>();
+        affinitiesToRegister.add(affinity);
+    }
+
     //endregion
 
     //region Registry Events
@@ -138,6 +144,16 @@ public class RegistryHandler {
 
         for ( EntityEntry entity : RegistryHandler.GetEntitiesToRegister ( ) ) {
             event.getRegistry().register(entity);
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerAffinities (RegistryEvent.Register <Affinity> event){
+        LogHelper.info("Registering Affinities");
+
+        for (Affinity affinity : RegistryHandler.GetAffinitiesToRegister ( ) ) {
+            event.getRegistry().register(affinity);
+            LogHelper.info("Registered affinity : " + affinity.getRegistryName());
         }
     }
 

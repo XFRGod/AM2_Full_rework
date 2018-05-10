@@ -19,4 +19,5 @@ public class ItemDefinitions {
     public static final ItemFireBall itemFireBall = new ItemFireBall();
     public static final ItemSalt itemSalt = new ItemSalt();
     public static final ItemSaltedBakedPotato saltedBakedPotato = new ItemSaltedBakedPotato();
+    public static final ItemAffinityStone affinitystone = new ItemAffinityStone();
 }

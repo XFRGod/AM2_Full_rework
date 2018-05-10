@@ -12,6 +12,12 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class ItemLevelStick extends AM2Item {
+
+    public ItemLevelStick(){
+        super("levelstick");
+        setMaxStackSize(1);
+    }
+
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
@@ -24,10 +30,6 @@ public class ItemLevelStick extends AM2Item {
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 
-    public ItemLevelStick(){
-        super("levelstick");
-        setMaxStackSize(1);
-    }
     @Override
     public boolean hasEffect(ItemStack par1ItemStack) {
         return true;
